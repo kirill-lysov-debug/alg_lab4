@@ -4,8 +4,6 @@ class MapLink:
         self.map = {}
 
     def addlink(self, shortlink, link):
-        # Обязательная часть (без вариативных пунктов 1 и 2):
-        # Просто сохраняем/перезаписываем ссылку по короткому коду
         self.map[shortlink] = link
         print("Добавлено\n")
 
@@ -16,7 +14,6 @@ class MapLink:
         return self.map.get(shortlink, None)
 
     def printShortLinks(self):
-        # Исправлено: выводим не только ключ, а всю пару, как в задании
         if not self.map:
             print("Хранилище пусто\n")
             return
@@ -25,25 +22,21 @@ class MapLink:
         print()
 
     def deleteLink(self, shortlink):
-        """Вариативная часть: пункт 3 (Удаление ссылки)"""
         if self.isSLink(shortlink):
             del self.map[shortlink]
             return True
         return False
 
-
 if __name__ == "__main__":
     map = MapLink()
 
-    print(
-        "Выберите, что хотите сделать с ссылками и их короткими кодами\n"
-    )
+    print("Выберите, что хотите сделать с ссылками и их короткими кодами\n")
     print("1. Добавить ссылку и короткий код на нее\n")
     print("2. Проверить существует ли короткий код\n")
     print("3. Получить ссылку по короткому коду\n")
     print("4. Вывести все короткие коды\n")
-    print("5. Удалить ссылку по короткому коду (Вариативный п.3)\n")
-    print("Все остальные значения - закончить работу с программой\n")
+    print("5. Удалить ссылку по короткому коду\n")
+    print("Все остальные значения - конец работы программы\n")
 
     A = True
     while A == True:
@@ -62,16 +55,16 @@ if __name__ == "__main__":
                 print("Введите короткий код\n")
                 sl = input("")
                 if map.isSLink(sl):
-                    print("Есть в ассортименте\n")
+                    print("Существует\n")
                 else:
-                    print("Нет в наличии\n")
+                    print("Отсутствует\n")
 
             case "3":
                 print("Введите короткий код\n")
                 sl = input("")
                 l = map.getLink(sl)
                 if l == None:
-                    print("Нет такой\n")
+                    print("Такой нет\n")
                 else:
                     print(f"Итог - {l}\n")
 
